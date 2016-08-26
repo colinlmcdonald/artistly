@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/colinlmcdonald/zenefits/issues"
   },
-  "homepage": "https://github.com/colinlmcdonald/zenefits#readme"
+  "homepage": "https://github.com/colinlmcdonald/zenefits#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }

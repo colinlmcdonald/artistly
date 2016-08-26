@@ -1,0 +1,13 @@
+#header {
+  text-align: center;
+}
+
+.img-fluid {
+  width: 100%;
+  height: auto;
+}
+
+.error-message {
+  color: red;
+  font-style: italic;
+}
