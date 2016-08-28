@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -60px;
+}
+
+.navbar {
+  background-color: black;
+  border: 0px;
+  border-radius: 0px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+#artistly-header {
+  margin: 10px;
+  color: white;
+  font-family: monospace;
+}
+
+.glyphicon-music {
+  color: #cdb327;
+  font-size: 40px;
+  margin: 10px;
+}
+
+.img-fluid {
+  width: 100%;
+  height: auto;
+}
+
+.error-message {
+  color: red;
+  font-style: italic;
+}
+
+.error-container {
+  display: none;
+}
+
+.artist-name {
+  padding: 0px;
+}
+
+.footer, .push {
+  height: 60px;
+}

@@ -1,29 +1,29 @@
 var songs = (function() {
   var song = {};
-  var player = $('#audio-player');
-  var errors = {};
   
+  var player = $('#audio-player');
   player.on('ended', function() {
     song.node.find('i').attr('class', 'glyphicon glyphicon-play-circle');
   })
 
   function requestSpotifyArtistSongs(artist) {
     $.get('https://api.spotify.com/v1/artists/' + artist.id + '/top-tracks?country=US', function(data) {
-      if (data.tracks.length) {
-        processArtistSongs(data, artist);
-      } else {
-        errors['no-songs'] = true;
-        artist.errorMessage('Sorry, this artist has no top songs.')
-      }
-    })
+      processArtistSongs(data, artist);
+    });
   }
 
   function processArtistSongs(songs, artist) {
-    $("#artist-info").html(templates.artistAndSongs({
+    $('#artist-info').html(templates.artist({
       artist: artist,
-      songs: songs.tracks
     }));
-    playerFunctionality();
+    if (songs.tracks.length) {
+      $('#songs-container').html(templates.songs({
+        songs: songs.tracks
+      }))
+      playerFunctionality();
+    } else {
+        $('#songs-container').html(templates.errorMessage({error: 'Sorry, there are no top tracks for this artist.'}))
+      }
   }
 
   function playerFunctionality() {
@@ -49,7 +49,6 @@ var songs = (function() {
         $el.find('i').attr('class', 'glyphicon glyphicon-play-circle');
         player.trigger('pause');
       }
-      
     });
   }
 
