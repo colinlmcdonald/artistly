@@ -1,6 +1,6 @@
 $( document ).ready(function() {
   var __errors__ = {};
-  var song= {};
+  var song = {};
   $('#submit-artist').submit(function(event) {
     event.preventDefault();
     var artist = $('#input-artist').val();
@@ -99,24 +99,31 @@ $( document ).ready(function() {
     }));
     var player = $('#audio-player');
     player.on('ended', function() {
-      console.log('hello');
+      song.node.find('i').attr('class', 'glyphicon glyphicon-play-circle');
     })
     
+    //Click to play song
+    //Click to pause song
+    //If song is already the preview, click to resume song
+    //When new song is clicked, change old song to pause
     $(".song-container").click(function() {
       var $el = $(this);
       var songPreview = $el.data('song-preview');
       var status = $el.find('i').attr('class');
-      if (song.preview === songPreview) {
-        console.log('hi');
-        player.trigger('play');
-      } else if (status === 'glyphicon glyphicon-play-circle') {
-        $el.find('i').attr('class', 'glyphicon glyphicon-pause');
-        player.attr('src', songPreview);
-        if (song.node) {
-          song.node.find('i').attr('glyphicon glyphicon-play-circle');
+      
+      if (status === 'glyphicon glyphicon-play-circle') {
+        if (song.preview === songPreview) {
+          player.trigger('play');
+          $el.find('i').attr('class', 'glyphicon glyphicon-pause');
+        } else {
+          $el.find('i').attr('class', 'glyphicon glyphicon-pause');
+          player.attr('src', songPreview);
+          if (song.node) {
+            song.node.find('i').attr('class', 'glyphicon glyphicon-play-circle');
+          } 
+          song.node = $(this);
+          song.preview = songPreview;
         } 
-        song.node = $(this);
-        song.preview = songPreview;
       } else {
         $el.find('i').attr('class', 'glyphicon glyphicon-play-circle');
         player.trigger('pause');
