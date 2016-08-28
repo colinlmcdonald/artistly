@@ -1,5 +1,6 @@
 $( document ).ready(function() {
   var __errors__ = {};
+  var song= {};
   $('#submit-artist').submit(function(event) {
     event.preventDefault();
     var artist = $('#input-artist').val();
@@ -96,15 +97,31 @@ $( document ).ready(function() {
       artist: artist,
       songs: songs.tracks
     }));
+    var player = $('#audio-player');
+    player.on('ended', function() {
+      console.log('hello');
+    })
+    
     $(".song-container").click(function() {
-      var songPreview = $(this).data('song-preview');
-      var player = $('#audio-player').attr('src', songPreview);
-      $(this).find('i').attr('class', 'glyphicon glyphicon-pause');
-      console.log(player);
-      player.on('ended', function() {
-        console.log('hello');
-      })
-
+      var $el = $(this);
+      var songPreview = $el.data('song-preview');
+      var status = $el.find('i').attr('class');
+      if (song.preview === songPreview) {
+        console.log('hi');
+        player.trigger('play');
+      } else if (status === 'glyphicon glyphicon-play-circle') {
+        $el.find('i').attr('class', 'glyphicon glyphicon-pause');
+        player.attr('src', songPreview);
+        if (song.node) {
+          song.node.find('i').attr('glyphicon glyphicon-play-circle');
+        } 
+        song.node = $(this);
+        song.preview = songPreview;
+      } else {
+        $el.find('i').attr('class', 'glyphicon glyphicon-play-circle');
+        player.trigger('pause');
+      }
+      
     });
   }
 
