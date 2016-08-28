@@ -7,33 +7,27 @@
   <title>Musicians on Spotify</title>
 </head>
 <body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div>
+        <i class="navbar-brand glyphicon glyphicon-music"></i>
+      </div>
+      <h2 id="artistly-header">Artistly</h2>
+    </div>
+  </nav>
   <div class="container">
     <div class="row">
-        <div class="col-sm-4 col-sm-offset-4">
-          <h1 id="header">Search for an Artist!</h1>
-        </div>
-      </div>
-    <div class="row">
-      <div class="form-group col-sm-4 col-sm-offset-4 col-lg-8 col-lg-offset-2">
+      <div class="form-group col-xs-8 col-xs-offset-2 col-md-6 col-md-offset-3">
         <form id="submit-artist">
           <label>Search</label>
-          <input type="search" class="form-control" id="input-artist" placeholder="Enter Artist Name">
+          <input type="search" class="form-control" id="input-artist" placeholder="Enter Artist's Name">
         </form>
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-4 col-sm-offset-4 col-lg-8 col-lg-offset-2" id="artist-info">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-4 col-sm-offset-4 col-lg-8 col-lg-offset-2" id="artist-picture">
-      </div>
-    </div>
+  <div class="container" id="artist-info">
   </div>
 
-  <script>var __errors__ = {}</script>
   <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
   <script src="app.js"></script>
