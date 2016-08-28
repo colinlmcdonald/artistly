@@ -88,3 +88,7 @@
     margin-right: 0vh;
   }
 }
+
+.error-container {
+  display: none;
+}
